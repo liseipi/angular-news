@@ -1,0 +1,72 @@
+<section class="container max-w-screen-xl mx-auto h-full mt-[2rem] mb-[5em]">
+  <div class="border-b border-zinc-300 inline-flex w-full items-center py-1">
+    <h2 class="font-bold text-2xl text-red-700 leading-[1.6]">全球动态</h2>
+    <span class="flex-1"></span>
+    <div class="data">{{today | date: "yyyy年MM月dd日 EEEE"}}</div>
+  </div>
+
+  <div class="flex">
+    <div class="lg:w-8/12">
+      <div class="mr-[4em] text-black dark:text-gray-300 py-4">
+        <ng-container *ngFor="let news of pageData.slice(0, 6) let i=index">
+          <ng-container *ngIf="i!=3; else elseTemplate">
+            <h4 class="text-2xl hover:bg-gray-200/[.6] px-4 py-2 truncate">
+              <a class="block" [routerLink]="['/content', news?.id]">{{news?.title}}</a>
+            </h4>
+          </ng-container>
+          <ng-template #elseTemplate>
+            <h5 class="text-lg hover:bg-gray-200/[.6] px-4 py-2 truncate">
+              <a [routerLink]="['/content', news?.id]">{{news?.title}}</a>
+            </h5>
+          </ng-template>
+        </ng-container>
+
+        <div class="border-b border-zinc-300 inline-flex w-full items-center py-1 mt-5">
+          <h2 class="font-bold text-2xl text-red-700 leading-[1.6]">热点精选</h2>
+        </div>
+
+        <div class="hot-list space-y-6">
+          <div
+            class="search-results"
+            infiniteScroll
+            [infiniteScrollDistance]="2"
+            [infiniteScrollThrottle]="50"
+            (scrolled)="onScroll()"
+          >
+            <div class="hot-list space-y-6">
+              <ng-container *ngFor="let news of hotListData let i=index">
+                <a class="block" [routerLink]="['/content', news.id]">
+                  <div class="my-5 flex flex-col rounded-none bg-white dark:bg-neutral-700 md:flex-row">
+                    <img class="w-[10em] h-[10em] rounded-xl object-cover" src="{{news.media}}" alt=""/>
+                    <div class="flex flex-col justify-start pl-6 grow">
+                      <h5 class="mb-2 text-xl font-medium text-neutral-800 dark:text-neutral-50">
+                        {{news.title}}
+                      </h5>
+                      <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+                        {{news.excerpt}}
+                      </p>
+                      <p class="text-xs text-neutral-500 dark:text-neutral-300">
+                        {{news.published_date|date}}
+                      </p>
+                    </div>
+                  </div>
+                </a>
+              </ng-container>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="lg:w-4/12">
+      <ul class="my-5 space-y-4 text-black dark:text-gray-400">
+        <li *ngFor="let news of hotSearchData let i=index">
+          <a [routerLink]="['/content', news?.id]">
+            <i class="dsFont text-3xl pr-3" [class]="{'text-indigo-300': i<3}">{{i + 1}}</i>
+            <span>{{news?.title}}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

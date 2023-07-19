@@ -56,7 +56,13 @@
               "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true
+              "namedChunks": true,
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.development.ts"
+                }
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -65,10 +71,12 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "angular-news:build:production"
+              "browserTarget": "angular-news:build:production",
+              "proxyConfig": "src/app/config/proxy/production.config.json"
             },
             "development": {
-              "browserTarget": "angular-news:build:development"
+              "browserTarget": "angular-news:build:development",
+              "proxyConfig": "src/app/config/proxy/development.config.json"
             }
           },
           "defaultConfiguration": "development"
@@ -100,5 +108,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "8b49aaa0-cc83-48a8-857d-ea0349373e36"
   }
 }
