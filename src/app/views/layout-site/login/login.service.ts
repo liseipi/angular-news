@@ -18,7 +18,7 @@ export class LoginService {
   }
 
   async doProfile(): Promise<any> {
-    return await this.httpService.toGet('/api/access/profile');
+    return await this.httpService.toGet('/api/profile');
   }
 
 }

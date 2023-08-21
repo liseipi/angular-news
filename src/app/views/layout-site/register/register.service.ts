@@ -14,10 +14,10 @@ export class RegisterService {
   ) { }
 
   async doRegister(formData: any): Promise<any> {
-    return await this.httpService.toPost('/api/signup', formData);
+    return await this.httpService.toPost('/api/register', formData);
   }
 
   async doProfile(): Promise<any> {
-    return await this.httpService.toGet('/api/access/profile');
+    return await this.httpService.toGet('/api/profile');
   }
 }

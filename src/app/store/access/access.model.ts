@@ -1,5 +1,5 @@
 export interface ProfileModel {
   aid: number,
-  full_name: string,
+  username: string,
   id: number
 }

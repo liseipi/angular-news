@@ -49,7 +49,7 @@ export class RegisterComponent {
     initTE({Input, Ripple, Toast});
 
     this.profileForm = this.fb.group({
-      fullName: ['', [Validators.required, Validators.minLength(2)]],
+      username: ['', [Validators.required, Validators.minLength(2)]],
       email: ['', [Validators.required, Validators.pattern('^([a-zA-Z]|[0-9])(\\w|\\-)+@[a-zA-Z0-9]+\\.([a-zA-Z]{2,4})$')]],
       password: ['', [Validators.required, Validators.pattern('^[\\d\\w]{6,12}$')]],
       repassword: ['', [Validators.required, matchPassword('password')]],
@@ -57,8 +57,8 @@ export class RegisterComponent {
 
   }
 
-  get fullName() {
-    return this.profileForm.get('fullName');
+  get username() {
+    return this.profileForm.get('username');
   }
 
   get email() {

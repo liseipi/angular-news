@@ -21,19 +21,19 @@
                 <form [formGroup]="profileForm" (ngSubmit)="HandleRegister()">
                   <p class="mb-4">填写注册信息</p>
 
-                  <div class="relative" [class]="[fullName?.invalid && (fullName?.dirty || fullName?.touched)?'mb-0':'mb-4']">
+                  <div class="relative" [class]="[username?.invalid && (username?.dirty || username?.touched)?'mb-0':'mb-4']">
                     <input
                       type="text"
                       class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       name="name"
-                      placeholder="FullName"
+                      placeholder="username"
                       required
                       minlength="2"
-                      formControlName="fullName"
+                      formControlName="username"
                     />
                   </div>
-                  <div *ngIf="fullName?.invalid && (fullName?.dirty || fullName?.touched)" class="mt-1 mb-3 w-full rounded-lg bg-danger-100 px-3 py-2 text-base text-danger-700">
-                    <div *ngFor="let e of arrayFrom(fullName?.errors)">
+                  <div *ngIf="username?.invalid && (username?.dirty || username?.touched)" class="mt-1 mb-3 w-full rounded-lg bg-danger-100 px-3 py-2 text-base text-danger-700">
+                    <div *ngFor="let e of arrayFrom(username?.errors)">
                       <div [ngSwitch]="e">
                         <p *ngSwitchCase="'required'">请填写您的姓名.</p>
                         <p *ngSwitchCase="'minlength'">您的姓名最少2位字符.</p>
